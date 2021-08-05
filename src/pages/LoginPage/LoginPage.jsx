@@ -13,7 +13,7 @@ import {
     Segment
 } from 'semantic-ui-react';
 
-export default function LoginPage(props){
+export default function LoginPage(props) {
     const [error, setError] = useState('');
     const [state, setState] = useState({
         username: '',
