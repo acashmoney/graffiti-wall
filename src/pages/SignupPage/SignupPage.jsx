@@ -29,39 +29,18 @@ export default function SignUpPage(props){
       e.preventDefault();
 
       try {
-          await userService.signup(state);
-    // setTheUser in our app
-          props.handleSignUpOrLogin() // gets the token from localstorage and updates the user state in our app.js
-    // with the correct user object from the current token
-    // then route to the homepage
-          history.push('/') // defined above from react-router-dom
-    // after this we can go whereever
+        await userService.signup(state);
+        props.handleSignUpOrLogin(); // gets the token from localstorage and updates the user state in our app.js
+        // with the correct user object from the current token
+        // then route to the homepage
+        history.push('/');
 
-    } catch(err){
-    console.log(err.message)
-    setError(err.message)
-    }
+      } catch (err) {
+        console.log(err.message);
+        setError(err.message);
+      }
 
     }
-
-    // async function handleSubmit(e) {
-    //     e.preventDefault();
-
-    //     const formData = new FormData();
-
-    //     for (let key in state) {
-    //         formData.append(key, state[key]);
-    //     }
-
-    //     try {
-    //         await userService.signup(formData);
-    //         props.handleSignUpOrLogin();
-    //         history.push('/');
-    //     } catch(err) {
-    //         console.log(err.message);
-    //         setError(err.message);
-    //     }
-    // }
 
     return (
         <>
