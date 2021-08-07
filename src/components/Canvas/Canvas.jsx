@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useHistory } from 'react-dom';
-import ArtService from '../../utils/artService';
+import { useHistory } from 'react-router-dom';
+import * as ArtService from '../../utils/artService';
 
 import CanvasDraw from "react-canvas-draw";
 import { Grid, Button } from 'semantic-ui-react';
@@ -12,10 +12,11 @@ export default function Canvas(props) {
     const [color, setColor] = useState('#666666');
     const [transparency, setTransparency] = useState();
     const [brushRadius, setBrushRadius] = useState(6);
-    const [artSaved, setArtSaved] = useState(true);
     const [art, setArt] = useState('art');
     
     const canvasRef = useRef();
+
+    const history = useHistory();
 
     async function updateColor(value) {
         setColor(value.hex);
@@ -29,21 +30,17 @@ export default function Canvas(props) {
     //     setTransparency(value);
     // }
 
-    // async function saveArt() {
-    //     localStorage.setItem(
-    //         'savedDrawing', 
-    //         console.log('attempting to save', this))
-    //         // setDrawing('save')
-    //         // this.saveableCanvas.getSaveData
-    // }
-
     const handleSubmit = async () => {
+        console.log(canvasRef.current);
         let artData = await canvasRef.current.getSaveData();
-        console.log(artData);
+        // ---- Compression for saving the art piece to the db -----
+
         // artData = await LZ.compress(artData);
         // console.log(artData);
         let piece = await ArtService.saveArt(artData);
         console.log(piece.compressedFile);
+
+        history.push('/');
     }
 
     return (
@@ -69,7 +66,6 @@ export default function Canvas(props) {
                 valueLabelDisplay='on'
             />
             <Button onClick={handleSubmit}>Save Art</Button>
-            {/* <AlphaPicker /> */}
         </>
     )
 }

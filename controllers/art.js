@@ -2,15 +2,18 @@ const Art = require('../models/art');
 
 module.exports = {
     saveArt,
+    index
 }
 
 async function saveArt(req, res) {
     console.log(req);
-    console.log('saving da art');
     console.log('req.body ---->', req.body);
-    Art.find({}, function(err, art) {
-        console.log('All art saved to db', art);
-    });
+
+    // -------- To show the art pieces in the db ---------
+
+    // Art.find({}, function(err, art) {
+    //     console.log('All art saved to db', art);
+    // });
     try {
         let artPiece = await Art.create({ compressedFile: JSON.stringify(req.body)});
         res.json(artPiece);
@@ -22,4 +25,12 @@ async function saveArt(req, res) {
     // const art = await Art.
 
     // res.JSON something when saving is done
+}
+
+async function index(req, res) {
+    console.log('hitting index backend function');
+    try {
+        const artPieces = await Art.find({})
+        res.status(200).json({artPieces})
+    } catch (err) {} 
 }
