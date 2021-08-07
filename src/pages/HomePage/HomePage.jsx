@@ -16,9 +16,6 @@ export default function HomePage(props) {
                     Make Your Mark
                 </a>
             </Header>
-            <p>
-                Submitted drawings below
-            </p>
             <Gallery />
         </>
     )

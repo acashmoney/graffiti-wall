@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import CanvasDraw from 'react-canvas-draw';
 import * as ArtService from '../../utils/artService';
+import LZ from 'lz-string';
 
 export default function Gallery() {
 
@@ -18,15 +19,14 @@ export default function Gallery() {
 
     console.log(pieces);
 
-    async function loadArt(art) {
-        return (
-            <CanvasDraw 
-                disabled
-                hideGrid
-                
-            />
-        )
-    }
+    // async function loadArt(art) {
+    //     return (
+    //         <CanvasDraw 
+    //             disabled
+    //             hideGrid
+    //         />
+    //     )
+    // }
 
     useEffect(()=> {
         getArt();
@@ -37,40 +37,50 @@ export default function Gallery() {
 
     }
 
-    // async function loadArt(artData) {
-    //     let artPiece = (
-    //         <CanvasDraw
-    //             disabled
-    //             hideGrid
-    //             ref={canvasRef}
-    //             saveData={artData}
-    //         />
-    //     )
-    //     return (
-    //         <CanvasDraw 
-    //             disabled
-    //             hideGrid
-    //             ref={canvasRef}
-    //         />
-    //     )
-    // }
-
-
-
     return (
         <div id='gallery'>
-            Gallery
-            Number of art pieces: {}
-            <Grid>
+            {/* Loop through database to get savedData strings for 
+            each art piece. Then use loadSaveData() */}
+            <CanvasDraw
+                disabled
+                hideGrid
+                loadTimeOffset={0}
+                saveData={pieces[0].compressedFile}
+            />
+            <CanvasDraw
+                disabled
+                hideGrid
+                loadTimeOffset={0}
+                saveData={pieces[1].compressedFile}
+            />
+            <CanvasDraw
+                disabled
+                hideGrid
+                loadTimeOffset={0}
+                saveData={pieces[2].compressedFile}
+            />
+            <CanvasDraw
+                disabled
+                hideGrid
+                loadTimeOffset={0}
+                saveData={pieces[3].compressedFile}
+            />
+            <CanvasDraw
+                disabled
+                hideGrid
+                loadTimeOffset={0}
+                saveData={pieces[4].compressedFile}
+            />
+            {/* {pieces.forEach(piece => {
+                console.log('piece  # ' + piece.index);
+                console.log(piece.compressedFile);
                 <CanvasDraw
                     disabled
                     hideGrid
-                    // ref={canvasRef}
+                    loadTimeOffset={0}
+                    saveData={piece.compressedFile}
                 />
-                {/* Loop through database to get savedData strings for 
-                each art piece. Then use loadSaveData() */}
-                {}
-            </Grid>
+            })} */}
         </div>
     )
 }
