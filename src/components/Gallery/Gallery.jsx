@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid } from 'semantic-ui-react';
 import CanvasDraw from 'react-canvas-draw';
 import * as ArtService from '../../utils/artService';
 import LZ from 'lz-string';
@@ -54,17 +54,18 @@ export default function Gallery() {
 
     return (
         <div id='gallery'>
-            <Grid>
-
+            <Grid columns={3} padded>
+                {pieces.map((piece, i) => 
+                    <Grid.Column>
+                        <CanvasDraw
+                            disabled
+                            hideGrid
+                            loadTimeOffset={0}
+                            saveData={piece.compressedFile}
+                        />
+                    </Grid.Column>
+                )}
             </Grid>
-            {pieces.map((piece, i) => 
-                <CanvasDraw
-                    disabled
-                    hideGrid
-                    loadTimeOffset={0}
-                    saveData={piece.compressedFile}
-                />
-            )}
         </div>
     )
 }
