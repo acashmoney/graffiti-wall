@@ -7,10 +7,12 @@ import LZ from 'lz-string';
 export default function Gallery() {
 
     const [pieces, setPieces] = useState([]);
+    let numPieces = 0;
 
     async function getArt() {
         try {
             const artPieces = await ArtService.getAll();
+            numPieces = artPieces.artPieces.length;
             setPieces(artPieces.artPieces);
         } catch (err) {
             console.log(err, "No art pieces uploaded");
@@ -28,59 +30,41 @@ export default function Gallery() {
     //     )
     // }
 
-    useEffect(()=> {
+    useEffect(() => {
         getArt();
     }, [])
 
 
     async function showArt() {
-
+        for (let i=0; i<numPieces; i++) {
+            return (
+                <CanvasDraw 
+                    disabled
+                    hideGrid
+                    loadTimeOffset={0}
+                    saveData={pieces[i].compressedFile}
+                />
+            )
+        }
     }
+
+    useEffect(() => {
+        showArt();
+    }, [])
 
     return (
         <div id='gallery'>
-            {/* Loop through database to get savedData strings for 
-            each art piece. Then use loadSaveData() */}
-            <CanvasDraw
-                disabled
-                hideGrid
-                loadTimeOffset={0}
-                saveData={pieces[0].compressedFile}
-            />
-            <CanvasDraw
-                disabled
-                hideGrid
-                loadTimeOffset={0}
-                saveData={pieces[1].compressedFile}
-            />
-            <CanvasDraw
-                disabled
-                hideGrid
-                loadTimeOffset={0}
-                saveData={pieces[2].compressedFile}
-            />
-            <CanvasDraw
-                disabled
-                hideGrid
-                loadTimeOffset={0}
-                saveData={pieces[3].compressedFile}
-            />
-            <CanvasDraw
-                disabled
-                hideGrid
-                loadTimeOffset={0}
-                saveData={pieces[4].compressedFile}
-            />
-            {/* {pieces.forEach(piece => {
-                console.log('piece  # ' + piece.index);
-                console.log(piece.compressedFile);
+            <Grid>
+
+            </Grid>
+            {pieces.map((piece, i) => 
                 <CanvasDraw
                     disabled
                     hideGrid
                     loadTimeOffset={0}
                     saveData={piece.compressedFile}
                 />
-            })} */}
+            )}
         </div>
     )
 }
