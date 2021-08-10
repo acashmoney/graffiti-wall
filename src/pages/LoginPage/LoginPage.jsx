@@ -50,8 +50,9 @@ export default function LoginPage(props) {
                 verticalAlign="middle"
             >
             <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as="h2" textAlign="center">
-                <Image src='https://image.flaticon.com/icons/png/512/3790/3790152.png' /> Log In
+            <Header id='log-in' as="h2" textAlign="center">
+                <Image src='https://image.flaticon.com/icons/png/512/3790/3790152.png' /> 
+                Log In
             </Header>
             <Form autoComplete="off" onSubmit={handleSubmit}>
                 <Segment stacked>
@@ -71,7 +72,7 @@ export default function LoginPage(props) {
                     required
                 />
                 <Button
-                    color="teal"
+                    color="purple"
                     fluid
                     size="large"
                     type="submit"
@@ -82,7 +83,7 @@ export default function LoginPage(props) {
                 </Segment>
             </Form>
             <Message>
-                New to us? <Link to="/signup">Sign Up</Link>
+                First timer? <Link to="/signup">Sign Up</Link>
             </Message>
             {error ? <ErrorMessage error={error} /> : null}
             </Grid.Column>

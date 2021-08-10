@@ -3,7 +3,6 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/art/';
 
 export function saveArt(art) {
-    console.log(art);
     return fetch(BASE_URL + 'save', {
         method: 'POST',
         body: art,
@@ -15,7 +14,6 @@ export function saveArt(art) {
             'Authorization': 'Bearer ' + tokenService.getToken()
         }
     }).then(res => {
-        console.log('res here ---->', res);
         return res.json();
     });
 }

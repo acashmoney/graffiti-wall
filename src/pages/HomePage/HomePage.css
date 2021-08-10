@@ -10,3 +10,8 @@
     font-family: 'Montserrat', sans-serif;
     color: #3C415C;
 }
+
+#gallery {
+    display: grid;
+    align-content: center;
+}

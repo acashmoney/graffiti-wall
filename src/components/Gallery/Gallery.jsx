@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
 import CanvasDraw from 'react-canvas-draw';
 import * as ArtService from '../../utils/artService';
-import LZ from 'lz-string';
 
 export default function Gallery() {
     const [pieces, setPieces] = useState([]);
@@ -41,7 +40,10 @@ export default function Gallery() {
 
     return (
         <div id='gallery'>
-            <Grid columns={3} padded>
+            <Grid 
+                columns={3} 
+                padded
+            >
                 {pieces.slice(0).reverse().map((piece, i) => 
                     <Grid.Column>
                         <CanvasDraw

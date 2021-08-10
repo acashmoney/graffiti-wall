@@ -10,12 +10,10 @@ import userService from '../../utils/userService'
 
 function App() {
 
-  const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
-  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like 
-  // this  const token = createJWT(user); // where user was the document we created from mongo
+  const [user, setUser] = useState(userService.getUser()); 
 
   function handleSignUpOrLogin(){
-    setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
+    setUser(userService.getUser());
   }
 
   function handleLogout(){
@@ -36,10 +34,10 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                  <HomePage />
+                  <HomePage user={user} handleLogout={handleLogout}/>
                 </Route>
                 <Route exact path='/create'>
-                  <CreatePage />
+                  <CreatePage user={user} handleLogout={handleLogout}/>
                 </Route>
             </Switch>
             </>

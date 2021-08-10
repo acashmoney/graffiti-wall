@@ -3,12 +3,11 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Form, Grid, Header, Image, Segment, Button } from 'semantic-ui-react';
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
-
+import './SignupPage.css';
 
 export default function SignUpPage(props){
 
     const [error, setError ] = useState('');
-    const [selectedFile, setSelectedFile] = useState('');
     const [state, setState] = useState({
         username: '',
         email: '',
@@ -46,8 +45,9 @@ export default function SignUpPage(props){
         <>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' textAlign='center'>
-                <Image src='https://image.flaticon.com/icons/png/512/3790/3790152.png' /> Sign Up
+              <Header id='sign-up' as='h2' class='ui purple inverted header' textAlign='center'>
+                <Image src='https://image.flaticon.com/icons/png/512/3790/3790152.png' />
+                Sign Up
               </Header>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment stacked>               
@@ -83,10 +83,11 @@ export default function SignUpPage(props){
                       required
                     />
                     <Button
+                      color='purple'
                       type="submit"
                       className="btn"
                     >
-                    Signup
+                    Sign Up
                   </Button>
                   </Segment>
                   {error ? <ErrorMessage error={error} /> : null}

@@ -6,9 +6,6 @@ module.exports = {
 }
 
 async function saveArt(req, res) {
-    console.log(req);
-    console.log('req.body ---->', req.body);
-
     try {
         let artPiece = await Art.create({ compressedFile: JSON.stringify(req.body) });
         res.json(artPiece);

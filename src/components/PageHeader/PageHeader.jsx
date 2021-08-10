@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Header, Segment } from 'semantic-ui-react';
+import { Header } from 'semantic-ui-react';
 
 export default function PageHeader({user, handleLogout}) {
     return (
@@ -11,13 +11,9 @@ export default function PageHeader({user, handleLogout}) {
                 </Link>
             </Header>
             <Header as='h2'>
-                <Link className='site-action' to='/create'>
-                    Make your Mark
-                </Link>
+                <Link className='site-action' to='/create'>Make your Mark</Link>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <Link className='site-action' to='' onClick={handleLogout}>
-                    PTFO
-                </Link>
+                <Link className='site-action' to='' onClick={handleLogout}>Exit the Wall</Link>
             </Header>
         </>
     )

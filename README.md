@@ -1,8 +1,11 @@
-## Setup 
+# Graffiti Wall
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+Graffiti Wall is a full-stack MERN application that allows users to create pieces of art and add them to the wall.
+
+![Home Page](https://i.imgur.com/68sVUNV.png)
+
+![Create Art](https://i.imgur.com/eq08tOk.png)
+
 
 
 #### Setup your git repo
