@@ -5,7 +5,6 @@ import * as ArtService from '../../utils/artService';
 import LZ from 'lz-string';
 
 export default function Gallery() {
-
     const [pieces, setPieces] = useState([]);
     let numPieces = 0;
 
@@ -19,21 +18,9 @@ export default function Gallery() {
         }
     }
 
-    console.log(pieces);
-
-    // async function loadArt(art) {
-    //     return (
-    //         <CanvasDraw 
-    //             disabled
-    //             hideGrid
-    //         />
-    //     )
-    // }
-
     useEffect(() => {
         getArt();
     }, [])
-
 
     async function showArt() {
         for (let i=0; i<numPieces; i++) {
@@ -55,7 +42,7 @@ export default function Gallery() {
     return (
         <div id='gallery'>
             <Grid columns={3} padded>
-                {pieces.map((piece, i) => 
+                {pieces.slice(0).reverse().map((piece, i) => 
                     <Grid.Column>
                         <CanvasDraw
                             disabled

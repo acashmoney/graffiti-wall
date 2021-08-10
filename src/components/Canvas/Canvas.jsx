@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import * as ArtService from '../../utils/artService';
-
 import CanvasDraw from "react-canvas-draw";
 import { Grid, Button } from 'semantic-ui-react';
 import { CirclePicker, AlphaPicker } from 'react-color';
@@ -31,12 +30,12 @@ export default function Canvas(props) {
     // }
 
     const handleSubmit = async () => {
-        console.log(canvasRef.current);
         let artData = await canvasRef.current.getSaveData();
         // ---- Compression for saving the art piece to the db -----
-
-        // artData = await LZ.compress(artData);
+        // artData = LZ.compressToBase64(artData);
+        // artData = [artData.toString()];
         // console.log(artData);
+        // console.log(typeof(artData));
         let piece = await ArtService.saveArt(artData);
         console.log(piece.compressedFile);
 
@@ -45,27 +44,33 @@ export default function Canvas(props) {
 
     return (
         <>
-            <CanvasDraw
-                ref={canvasRef}
-                brushColor={color}
-                // transparency={transparency}
-                brushRadius={brushRadius}
-                lazyRadius={1}
-            />
-            {/* create a textfield for inputting art title */}
-            <CirclePicker 
-                color={color}
-                onChange={updateColor}
-            />
-            {/* <AlphaPicker onChange={updateTransparency} color={color}/> */}
-            <Slider
-                defaultValue={brushRadius}
-                min={1}
-                max={100}
-                onChange={updateBrushRadius}
-                valueLabelDisplay='on'
-            />
-            <Button onClick={handleSubmit}>Save Art</Button>
+            <Grid divided='horizontally' columns={2}>
+                <Grid.Column>
+                    <CanvasDraw
+                        ref={canvasRef}
+                        brushColor={color}
+                        // transparency={transparency}
+                        brushRadius={brushRadius}
+                        lazyRadius={1}
+                    />
+                </Grid.Column>
+                <Grid.Column>
+                    <CirclePicker 
+                        color={color}
+                        onChange={updateColor}
+                    />
+                    {/* <AlphaPicker onChange={updateTransparency} color={color}/> */}
+                    <Slider
+                        defaultValue={brushRadius}
+                        min={1}
+                        max={100}
+                        onChange={updateBrushRadius}
+                        valueLabelDisplay='on'
+                    />
+                    <Button onClick={handleSubmit}>Add to Wall</Button>
+                </Grid.Column>
+                
+            </Grid>
         </>
     )
 }

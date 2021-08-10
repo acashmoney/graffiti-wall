@@ -1,9 +1,12 @@
 #site-title {
+    color: #B4A5A5;
     font-family: 'Sedgwick Ave Display', cursive;
     font-size: 64px;
     padding: 5px;
+    background-color: #151515;
 }
 
 .site-action {
     font-family: 'Montserrat', sans-serif;
+    color: #3C415C;
 }

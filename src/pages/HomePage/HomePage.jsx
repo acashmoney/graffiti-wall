@@ -4,19 +4,16 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Gallery from '../../components/Gallery/Gallery';
 import userService from '../../utils/userService';
 import {Header} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
+import PageHeader from '../../components/PageHeader/PageHeader';
 
-export default function HomePage(props) {
+export default function HomePage({user, handleLogout}) {
     return (
         <>
-            <Header as='h1'>
-                <div id='site-title'>Graffiti Wall</div>
-            </Header>
-            <Header as='h2'>
-                <a className= 'site-action' href='/create'>
-                    Make Your Mark
-                </a>
-            </Header>
-            <Gallery />
+            <PageHeader/>
+            <div id='gallery'>
+                <Gallery />
+            </div>
         </>
     )
 }
