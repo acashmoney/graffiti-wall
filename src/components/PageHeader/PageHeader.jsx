@@ -12,11 +12,11 @@ export default function PageHeader({user, handleLogout}) {
             </Header>
             <Header as='h2'>
                 <Link className='site-action' to='/create'>
-                    Paint
+                    Make your Mark
                 </Link>
-                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <Link className='site-action' to='' onClick={handleLogout}>
-                    Exit
+                    PTFO
                 </Link>
             </Header>
         </>
