@@ -6,37 +6,38 @@ Graffiti Wall is a full-stack MERN application that allows users to create piece
 
 ![Create Art](https://i.imgur.com/eq08tOk.png)
 
+## Technologies Used
 
+1. React
+2. JavaScript
+3. HTML/CSS
+4. MongoDB
+5. Mongoose
+6. Express
+7. Node
+8. Semantic UI
+9. Material UI
+10. [React Canvas Draw](https://github.com/embiem/react-canvas-draw)
+11. [React Color](https://github.com/casesandberg/react-color)
 
-#### Setup your git repo
+## Getting Started
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+[Deployed App](https://graffiti-wall.herokuapp.com/)
 
-it should look like this
+[Project Planning](https://trello.com/b/o5y5AMOl/grafitti-wall)
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
+1. Sign up for an account.
+2. Log in.
+3. Click 'Make your Mark'.
+4. Create art.
+5. Click 'Add to Wall'.
+6. View your art on the wall!
 
-#### Setup the App
+## Next Steps
 
-```npm install```
+Future enhancements can be seen in detail on the publicly available [Trello board](https://trello.com/b/o5y5AMOl/grafitti-wall). In summary:
 
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+1. Alpha modifier for paint colors.
+2. More options for painting, such as a spray paint tool.
+3. Viewing usernames for submitted pieces.
+4. Ability to like pieces on the graffiti wall.
